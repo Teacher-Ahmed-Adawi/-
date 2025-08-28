@@ -9,15 +9,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
         
         :root {
-            --primary-color: #4A90E2; /* أزرق يعبر عن الوضوح والمنطق */
-            --secondary-color: #7C8B9E; /* رمادي أزرق */
-            --dark-bg: #1A1A2E; /* خلفية داكنة زرقاء */
-            --card-bg: #16213E; /* لون بطاقة أغمق */
-            --text-color: #E6E6E6; /* نص فاتح */
-            --accent-color: #0F3460; /* لون تمييزي أغمق */
-            --math-orange: #FF7B25; /* برتقالي للتمييز - يستخدم في الرياضيات للتنبيه */
-            --math-green: #4CAF50; /* أخضر للإيجابية والحلول */
-            --math-purple: #9C27B0; /* بنفسجي للإبداع */
+            --primary-color: #4A90E2;  */
+            --secondary-color: #7C8B9E; ق */
+            --dark-bg: #1A1A2E;  */
+            --card-bg: #16213E; /ق */
+            --text-color: #E6E6E6; /ح */
+            --accent-color: #0F3460; /* */
+            --math-orange: #FF7B25; /* */
+            --math-green: #4CAF50; /*  */
+            --math-purple: #9C27B0; /* ع */
             --gradient: linear-gradient(45deg, var(--math-purple), var(--primary-color), var(--math-orange));
         }
         
@@ -312,6 +312,16 @@
             animation: floatAround 15s linear infinite;
         }
         
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--math-orange);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
         @keyframes float {
             0%, 100% {
                 transform: translateY(0) rotateY(0deg);
@@ -337,6 +347,10 @@
             100% {
                 transform: translate(0, 0) rotate(360deg);
             }
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
         
         .parallax-bg {
@@ -389,7 +403,7 @@
         <section class="hero">
             <div class="profile-card">
                 <div class="profile-img">
-                    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/531236269_17848532886538842_2128693364604854049_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=109&ccb=1-7&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=Oz5Yq0LlD98Q7kNvwE8-uxk&_nc_oc=AdkT_oDv-MwQLfqSmVk-vVzAPGtULK3K9vKZq8v0NxN3UN3g-_jdOV_T-L9sMObIy54&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=MNqcqRs4_TGiOLWEtE703g&oh=00_AfUf-9XUqxpUBm78ZaEKsGUz1QEl_cBs43eMb3qlO-0HPA&oe=68B5A349" alt="Ahmed Adwi">
+                    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/531236269_17848532886538842_2128693364604854049_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=109&ccb=1-7&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcيل.pic.1080p.C3&_nc_ohc=Oz5Yq0LlD98Q7kNvwE8-uxk&_nc_oc=AdkT_oDv-MwQLfqSmVk-vVzAPGtULK3K9vKZq8v0NxN3UN3g-_jdOV_T-L9sMObIy54&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=MNqcqRs4_TGiOLWEtE703g&oh=00_AfUf-9XUqxpUBm78ZaEKsGUz1QEl_cBs43eMb3qlO-0HPA&oe=68B5A349" alt="Ahmed Adwi">
                 </div>
                 <div class="profile-info">
                     <h1>math_adwi (@math_with_ahmed)</h1>
@@ -397,7 +411,9 @@
                     
                     <div class="stats">
                         <div class="stat">
-                            <div class="stat-number">82</div>
+                            <div class="stat-number" id="followers-count">
+                                <span class="loading"></span>
+                            </div>
                             <div class="stat-label">متابعون</div>
                         </div>
                         <div class="stat">
@@ -405,7 +421,9 @@
                             <div class="stat-label">يتبع</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">3</div>
+                            <div class="stat-number" id="posts-count">
+                                <span class="loading"></span>
+                            </div>
                             <div class="stat-label">منشورات</div>
                         </div>
                     </div>
@@ -421,15 +439,9 @@
             "لاَ يُنَالُ العِلْمُ بِرَاحَةِ البَدَنِ"
         </div>
         
-        <div class="gallery">
+        <div class="gallery" id="instagram-posts">
             <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Math 1">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Math 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Math 3">
+                <div class="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
             </div>
         </div>
         
@@ -445,7 +457,6 @@
     </div>
 
     <script>
-        // إنشاء العناصر الطافية في الخلفية
         const floatingIcons = document.getElementById('floatingIcons');
         const icons = ['fa-calculator', 'fa-square-root-alt', 'fa-infinity', 'fa-plus', 'fa-minus', 'fa-equals', 'fa-times'];
         
@@ -459,7 +470,6 @@
             floatingIcons.appendChild(icon);
         }
         
-        // إنشاء تأثيرات الخلفية
         const parallaxBg = document.getElementById('parallaxBg');
         
         for (let i = 0; i < 10; i++) {
@@ -472,7 +482,6 @@
             parallaxBg.appendChild(item);
         }
         
-        // تأثير الحركة ثلاثية الأبعاد مع تحريك الماوس
         document.addEventListener('mousemove', (e) => {
             const x = (window.innerWidth / 2 - e.clientX) / 25;
             const y = (window.innerHeight / 2 - e.clientY) / 25;
@@ -492,6 +501,73 @@
                 item.style.transform = `rotateY(${itemX}deg) rotateX(${itemY}deg) translateZ(20px)`;
             });
         });
+
+        async function fetchInstagramData() {
+            const username = 'math_with_ahmed';
+            
+            try {
+               
+                
+                const mockResponse = {
+                    followers: 125, 
+                    following: 2,
+                    posts: 8, 
+                    postsList: [
+                        {
+                            image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                            link: "https://www.instagram.com/p/example1"
+                        },
+                        {
+                            image: "https://images.unsplash.com/photo-1596496050827-8298c446cf50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                            link: "https://www.instagram.com/p/example2"
+                        },
+                        {
+                            image: "https://images.unsplash.com/photo-1575869579500-6d5309e058c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                            link: "https://www.instagram.com/p/example3"
+                        }
+                    ]
+                };
+                
+                // const response = await fetch(`https://your-proxy-server.com/instagram/${username}`);
+                // const data = await response.json();
+                
+                document.getElementById('followers-count').innerHTML = formatNumber(mockResponse.followers);
+                document.getElementById('posts-count').innerHTML = mockResponse.posts;
+                
+                const postsContainer = document.getElementById('instagram-posts');
+                postsContainer.innerHTML = '';
+                
+                mockResponse.postsList.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'gallery-item';
+                    postElement.innerHTML = `
+                        <a href="${post.link}" target="_blank">
+                            <img src="${post.image}" alt="Instagram Post">
+                        </a>
+                    `;
+                    postsContainer.appendChild(postElement);
+                });
+                
+            } catch (error) {
+                console.error('Error fetching Instagram data:', error);
+                document.getElementById('followers-count').innerHTML = '82';
+                document.getElementById('posts-count').innerHTML = '3';
+            }
+        }
+        
+        
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(1) + 'M';
+            } else if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num;
+        }
+        
+        document.addEventListener('DOMContentLoaded', fetchInstagramData);
+        
+        setInterval(fetchInstagramData, 300000);
     </script>
 </body>
 </html>
