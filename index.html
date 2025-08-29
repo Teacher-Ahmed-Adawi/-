@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلم الرياضيات - الأستاذ أحمد عدوي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+
+        header {
+            background-color: rgba(44, 62, 80, 0.95);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-left: 40px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            position: relative;
+            perspective: 1000px;
+        }
+        
+        .image-wrapper {
+            width: 350px;
+            height: 350px;
+            margin: 0 auto;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate3d(0.2, 0.5, 0.3, 5deg); }
+            50% { transform: translateY(-20px) rotate3d(0.2, 0.5, 0.3, -5deg); }
+        }
+        
+        .teacher-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateZ(20px);
+        }
+        
+        .math-element {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+            opacity: 0.7;
+        }
+        
+        .math-1 { top: -20px; left: 30px; animation: move1 15s infinite linear; }
+        .math-2 { top: 50px; right: 0; animation: move2 12s infinite linear; }
+        .math-3 { bottom: 40px; left: 10px; animation: move3 10s infinite linear; }
+        .math-4 { bottom: 0; right: 40px; animation: move4 18s infinite linear; }
+        
+        @keyframes move1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(20px, 30px) rotate(180deg); }
+        }
+        
+        @keyframes move2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 20px) rotate(-180deg); }
+        }
+        
+        @keyframes move3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(15px, -25px) rotate(150deg); }
+        }
+        
+        @keyframes move4 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-25px, -15px) rotate(-150deg); }
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image img:hover {
+            transform: perspective(1000px) rotateY(0);
+        }
+        
+
+        .locations {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .cities {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .city-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .city-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .city-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .city-card:hover .city-img img {
+            transform: scale(1.1);
+        }
+        
+        .city-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .city-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+
+        .contact {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .social-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            top: 0;
+            left: 0;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .instagram {
+            background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+        }
+        
+        .youtube {
+            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        }
+        
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+        
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+        
+
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+
+        @media (max-width: 992px) {
+            .hero-content, .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text, .about-text {
+                padding: 0;
+                margin-bottom: 40px;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .image-wrapper {
+                width: 280px;
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">أحمد <span>عدوي</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">عن المعلم</a></li>
+                <li><a href="#locations">أماكن التدريس</a></li>
+                <li><a href="#contact">التواصل</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>الأستاذ أحمد عدوي</h1>
+                <h2>معلم الرياضيات المحترف</h2>
+                <p> خبرة في تدريس الرياضيات لجميع المراحل التعليمية. أساعد الطلاب على فهم الرياضيات بطريقة سهلة وممتعة وتحسين أدائهم الأكاديمي.</p>
+                <a href="#contact" class="btn">تواصل معي الآن</a>
+            </div>
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <!-- سيتم تحميل الصورة من المجلد المحلي -->
+                    <img src="ahmed_adawi.jpg" alt="الأستاذ أحمد عدوي" class="teacher-img" id="main-teacher-img" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80'">
+                    <div class="math-element math-1">π</div>
+                    <div class="math-element math-2">∫</div>
+                    <div class="math-element math-3">∞</div>
+                    <div class="math-element math-4">√</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">عن المعلم</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>أحمد عدوي، معلم رياضيات محترف في الرياضيات التطبيقية. متخصص في تدريس جميع فروع الرياضيات بما في ذلك الجبر، الهندسة، التفاضل والتكامل، والإحصاء.</p>
+                    <p>أسعى دائمًا إلى تبسيط المفاهيم الرياضية المعقدة وجعلها ممتعة وسهلة الفهم للطلاب. أستخدم أساليب تدريس مبتكرة تساعد الطلاب على تطوير مهارات التفكير النقدي وحل المشكلات.</p>
+                    <p>حاصل على العديد من الشهادات التقديرية في مجال تدريس الرياضيات.</p>
+                </div>
+                <div class="about-image">
+
+                    <img src="teaching_math.jpg" alt="تعليم الرياضيات" id="about-img" onerror="this.src='https://images.unsplash.com/photo-1596495577886-d920f1fb7238?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="locations" id="locations">
+        <div class="container">
+            <h2 class="section-title">أماكن التدريس</h2>
+            <div class="cities">
+                <div class="city-card">
+                    <div class="city-img">
+
+                        <img src="amman.jpg" alt="عمان" id="amman-img" onerror="this.src='https://images.unsplash.com/photo-1587334274527-ba54f0b5a357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="city-info">
+                        <h3>عمان</h3>
+                        <p>تدريس في مراكز متعددة في مختلف مناطق العاصمة عمان. دروس فردية وجماعية لجميع المستويات.</p>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <div class="city-img">
+
+                        <img src="zarqa.jpg" alt="الزرقاء" id="zarqa-img" onerror="this.src='https://images.unsplash.com/photo-1587334274527-ba54f0b5a357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80'">
+                    </div>
+                    <div class="city-info">
+                        <h3>الزرقاء</h3>
+                        <p>تدريس في مراكز تعليمية في محافظة الزرقاء. استعداد للامتحانات ودروس تقوية مكثفة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">تواصل معي</h2>
+            <p style="text-align: center;">يمكنك التواصل معي عبر منصات التواصل الاجتماعي أو الاتصال بي مباشرة</p>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/math_with_ahmed" class="social-icon instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@ahmed-salah-math?si=VuoQwKlU2FdJOMvc" class="social-icon youtube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://wa.me/96278180209" class="social-icon whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">أحمد <span>عدوي</span></div>
+            <p>معلم الرياضيات المحترف - عمان والزرقاء</p>
+            <div class="copyright">
+                <p>© 2025 جميع الحقوق محفوظة |Ayham Al-Harsha </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 62, 80, 0.98)';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.background = 'rgba(44, 62, 80, 0.95)';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
